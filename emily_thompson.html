@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Emily Thompson - Interviewer</title>
+  <style>
+  
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f5f5f5;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .card {
+      max-width: 400px;
+      padding: 40px;
+      border-radius: 10px;
+      background-color: #fff;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+    .interviewer-img {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      margin-bottom: 20px;
+    }
+    .interviewer-name {
+      font-size: 24px;
+      font-weight: bold;
+      color: #333;
+      margin-bottom: 10px;
+    }
+    .interviewer-description {
+      font-size: 16px;
+      line-height: 1.6;
+      color: #555;
+    }
+    .go-back-btn {
+      margin-top: 20px;
+      background-color: #4285f4;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .go-back-btn:hover {
+      background-color: #3367d6;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <img src="https://img.freepik.com/free-photo/close-up-portrait-cheerful-glamour-girl-with-cute-make-up-smiling-white-teeth-looking-happy-camera-standing-blue-background_1258-70300.jpg?w=996&t=st=1702060997~exp=1702061597~hmac=1f5d522317a1d74449e0e88b14991648ddfedfb7a20601eb5e7cdefe466a04ab" alt="Emily Thompson" class="interviewer-img">
+    <div class="interviewer-name">Emily Thompson</div>
+    <div class="interviewer-description">
+      <p>
+        Emily Thompson is a seasoned interviewer with years of experience in the field. She specializes in behavioral interviews, focusing on understanding candidates' motivations and behaviors.
+      </p>
+      <p>
+        Her approach involves creating a comfortable atmosphere for applicants, facilitating insightful conversations. Beyond work, Emily enjoys nature photography and exploring new cuisines.
+      </p>
+    </div>
+    <button class="go-back-btn" onclick="goBack()">Go Back</button>
+  </div>
+
+  <script>
+    
+    function goBack() {
+      window.location.href = 'mock interview.html'; 
+    }
+  </script>
+</body>
+</html>

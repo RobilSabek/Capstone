@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Code Review Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #f4f4f4;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    #codeForm {
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    #codeInput {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      resize: vertical;
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: #7335b7;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      display: block; 
+      margin: 0 auto; 
+    }
+
+    button:hover {
+      background-color: #7335b7; 
+    }
+
+    .codeEntry {
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      margin-bottom: 10px;
+      padding: 10px;
+      background-color: white;
+    }
+
+    #whatsappLink {
+      display: block;
+      text-align: center;
+      margin-top: 20px;
+      font-size: 18px;
+      color: #7335b7;
+      text-decoration: none;
+    }
+
+    #whatsappLink:hover {
+      color: #7335b7; 
+    }
+
+    
+  </style>
+</head>
+<body>
+  <h1>Code Review Page</h1>
+  <form id="codeForm">
+    <textarea id="codeInput" rows="8" cols="80" placeholder="Enter your code here"></textarea>
+    <button type="submit">Submit Code</button>
+  </form>
+  <div id="codeHistory">
+    <h2 style="text-align: center;">Code History</h2>
+   
+    <div class="codeEntry">
+      <pre>// Sample code</pre>
+      <form class="commentForm">
+        <input type="text" placeholder="Write a comment">
+        <button type="submit">Submit Comment</button>
+      </form>
+      
+      <div class="comments"></div>
+    </div>
+  </div>
+
+  <a id="whatsappLink" href="https://chat.whatsapp.com/FSA80DwHIw71JoRFDAN8NL" target="_blank" title="Join Our WhatsApp Group">
+    <strong>Join Our WhatsApp Group and Collaborate!</strong> 
+  </a>
+
+  <script src="community.js"></script>
+</body>
+</html>

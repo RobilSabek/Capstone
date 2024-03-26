@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Your Career Journey</title>
+  <style>
+    /* Styles for flipping cards */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f9f9f9;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    header {
+      background-color: #7335b7;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
+
+    nav ul {
+      list-style: none;
+      padding: 0;
+      text-align: center;
+    }
+
+    nav ul li {
+      display: inline;
+      margin-right: 20px;
+    }
+
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
+
+    nav ul li a:hover {
+      color: #ffd700;
+    }
+
+    main {
+      padding: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around; /* Spread the sections */
+      gap: 15px; /* Add space between sections */
+    }
+
+    section {
+      position: relative;
+      perspective: 1000px;
+      cursor: pointer;
+      transition: transform 0.6s;
+      transform-style: preserve-3d;
+      width: 300px;
+      height: 200px;
+    }
+
+    section:hover {
+      transform: rotateY(180deg);
+    }
+
+    .front,
+    .back {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      backface-visibility: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      color: #333;
+      background-color: #fff;
+    }
+
+    .front {
+      z-index: 2;
+      transform: rotateY(0deg);
+    }
+
+    .back {
+      transform: rotateY(180deg);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .back a {
+      color: #1e90ff;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
+
+    .back a:hover {
+      color: #ff6347;
+    }
+
+    /* Styles for search bar */
+    #search-bar {
+      margin: 20px;
+      padding: 10px;
+      width: 300px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+    }
+    #card-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+
+    section {
+      margin-bottom: 20px;
+    }
+    #card-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+
+    section {
+      margin-bottom: 20px;
+      margin-right: 20px;
+      margin-top: 20px; /* Adding space at the top */
+    }
+    
+  </style>
+ 
+</head>
+<body>
+  <header>
+    <link rel="import" href="header.html">
+    <h1>Your Career Journey</h1>
+    <!-- Search bar -->
+    <input type="text" id="search-bar" placeholder="Search for a topic...">
+  </header>
+
+  <main id="card-container">
+    <!-- Card sections -->
+    <section id="intro_email">
+      <div class="front">
+        <h2>Template for Introductory Email</h2>
+        <p>Create a striking introductory email for potential employers or contacts.</p>
+      </div>
+      <div class="back">
+        <p><a href="PDF's\students-template-for-introduction-email.docx" target="_blank">Download Email Template PDF</a></p>
+      </div>
+    </section>
+
+    <!-- Section: Professional Networking and LinkedIn -->
+    <section id="networking">
+      <div class="front">
+        <h2>Professional Networking and LinkedIn</h2>
+        <p>Effective networking and leveraging LinkedIn for career growth.</p>
+      </div>
+      <div class="back">
+        <p><a href="PDF's\linkedin-content-and-templates.pdf" target="_blank">Download Networking PDF</a></p>
+      </div>
+    </section>
+
+    <!-- Placeholder for additional sections -->
+    <section id="chatgpt">
+      <div class="front">
+        <h2>Using ChatGPT in Job Search</h2>
+        <p>Utilizing ChatGPT technology to enhance job search strategies.</p>
+      </div>
+      <div class="back">
+        <p><a href="PDF's\session-4-using-chatgpt-in-your-job-search (1).pdf" target="_blank">Download ChatGPT Job Search PDF</a></p>
+      </div>
+    </section>
+
+    <section id="global_business">
+      <div class="front">
+        <h2>Working in a Global Business Environment</h2>
+        <p>Adapting and thriving in an international business context.</p>
+      </div>
+      <div class="back">
+        <p><a href="PDF's\global-business-skills.pdf" target="_blank">Download Global Business PDF</a></p>
+      </div>
+    </section>
+
+    <!-- Add more sections similarly -->
+    <section id="career_plan">
+      <div class="front">
+        <h2>Creating a Career Plan</h2>
+        <p>Guidance on strategizing and planning for your career path.</p>
+      </div>
+      <div class="back">
+        <p><a href="PDF's\session-6-part-1-career-path-exploration.pdf" target="_blank">Download Career Plan PDF</a></p>
+      </div>
+    </section>
+
+    <section id="professional_skills">
+      <div class="front">
+        <h2>Professional Skills Development</h2>
+        <p>Enhancing and developing crucial skills for career success.</p>
+      </div>
+      <div class="back">
+        <p><a href="PDF's\session-7-part-1-professional-skills.pdf" target="_blank">Download Professional Skills PDF</a></p>
+      </div>
+    </section>
+
+    <section id="resume_cv">
+      <div class="front">
+        <h2>Building a Professional Resume or CV</h2>
+        <p>Insights and tips on creating an impactful resume or CV.</p>
+      </div>
+      <div class="back">
+        <p><a href="PDF's\session-8-9-resume-and-cv-guide.pdf" target="_blank">Download Resume/CV PDF</a></p>
+      </div>
+    </section>
+
+    <section id="job_search">
+      <div class="front">
+        <h2>Job Search Strategies</h2>
+        <p>Effective strategies and techniques for job hunting.</p>
+      </div>
+      <div class="back">
+        <p><a href="PDF's\session-4-using-chatgpt-in-your-job-search (1).pdf" target="_blank">Download Job Search Strategies PDF</a></p>
+      </div>
+    </section>
+
+    <section id="job_interview">
+      <div class="front">
+        <h2>Preparing for Job Interviews</h2>
+        <p>Tips and insights to excel in job interviews.</p>
+      </div>
+      <div class="back">
+        <p><a href="PDF's\session-11-12-the-job-interview.pdf" target="_blank">Download Job Interview Prep PDF</a></p>
+      </div>
+    </section>
+
+    <section id="distinguish_workplace">
+      <div class="front">
+        <h2>Distinguishing Yourself in the Workplace</h2>
+        <p>Strategies to stand out and excel in your professional environment.</p>
+      </div>
+      <div class="back">
+        <p><a href="PDF's\session-13-how-to-distinguish-yourself-in-the-workplace.pdf" target="_blank">Download Workplace Distinction PDF</a></p>
+      </div>
+    </section>
+
+    <section id="professional_development">
+      <div class="front">
+        <h2>Continuing Professional Development</h2>
+        <p>Continuous learning and growth in your professional journey.</p>
+      </div>
+      <div class="back">
+        <p><a href="PDF's\session-14-continuing-professional-development.pdf" target="_blank">Download Professional Development PDF</a></p>
+      </div>
+    </section>
+    <section id="professional_development">
+        <div class="front">
+          <h2>Linkedin Advanced Training</h2>
+          <p>Linkedin guide all what you need to know is here in this guide</p>
+        </div>
+        <div class="back">
+          <p><a href="PDF's\sessions-23-linkedin-advanced-training-guide.pdf" target="_blank">Download Professional Development PDF</a></p>
+        </div>
+      </section>
+
+  </main>
+
+  <script>
+    // JavaScript for filtering cards based on search input
+    const searchBar = document.getElementById('search-bar');
+    const cardContainer = document.getElementById('card-container');
+
+    searchBar.addEventListener('input', function(event) {
+      const searchTerm = event.target.value.toLowerCase();
+
+      // Loop through each section and check if it matches the search term
+      const sections = cardContainer.getElementsByTagName('section');
+      Array.from(sections).forEach(section => {
+        const sectionTitle = section.querySelector('.front h2').textContent.toLowerCase();
+        const sectionContent = section.querySelector('.front p').textContent.toLowerCase();
+
+        // If the search term matches the section title or content, display the section; otherwise, hide it
+        if (sectionTitle.includes(searchTerm) || sectionContent.includes(searchTerm)) {
+          section.style.display = 'block';
+        } else {
+          section.style.display = 'none';
+        }
+      });
+    });
+  </script>
+</body>
+</html>

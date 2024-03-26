@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Alexander Johnson - Interviewer</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f5f5f5;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .card {
+      max-width: 400px;
+      padding: 40px;
+      border-radius: 10px;
+      background-color: #fff;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .interviewer-img {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      margin-bottom: 20px;
+    }
+    .interviewer-name {
+      font-size: 24px;
+      font-weight: bold;
+      color: #333;
+      margin-bottom: 10px;
+    }
+    .interviewer-description {
+      font-size: 16px;
+      line-height: 1.6;
+      color: #555;
+    }
+    .go-back-btn {
+      margin-top: 20px;
+      background-color: #4285f4;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .go-back-btn:hover {
+      background-color: #3367d6;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <img src="https://st2.depositphotos.com/1715570/5435/i/450/depositphotos_54357355-stock-photo-handsome-young-black-man-smiling.jpg" alt="Alexander Johnson" class="interviewer-img">
+    <div class="interviewer-name">Alexander Johnson</div>
+    <div class="interviewer-description">
+      <p>
+        Alexander Johnson specializes in leadership interviews. With a background in business administration, he focuses on assessing candidates' management and decision-making skills.
+      </p>
+      <p>
+        His interview style often involves scenario-based questions to evaluate applicants' strategic thinking. Beyond work, Alexander enjoys mentoring aspiring entrepreneurs and exploring different cultures.
+      </p>
+    </div>
+    <button class="go-back-btn" onclick="goBack()">Go Back</button>
+  </div>
+
+  <script>
+   
+    function goBack() {
+      window.location.href = 'mock interview.html'; 
+    }
+  </script>
+</body>
+</html>

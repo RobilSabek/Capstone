@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Simon Drake - Interviewer</title>
+  <style>
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f5f5f5;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .card {
+      max-width: 400px;
+      padding: 40px;
+      border-radius: 10px;
+      background-color: #fff;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .interviewer-img {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      margin-bottom: 20px;
+    }
+    .interviewer-name {
+      font-size: 24px;
+      font-weight: bold;
+      color: #333;
+      margin-bottom: 10px;
+    }
+    .interviewer-description {
+      font-size: 16px;
+      line-height: 1.6;
+      color: #555;
+    }
+    .go-back-btn {
+      margin-top: 20px;
+      background-color: #4285f4;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .go-back-btn:hover {
+      background-color: #3367d6;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <img src="https://img.freepik.com/free-photo/waist-up-portrait-handsome-serious-unshaven-male-keeps-hands-together-dressed-dark-blue-shirt-has-talk-with-interlocutor-stands-against-white-wall-self-confident-man-freelancer_273609-16320.jpg?w=996&t=st=1702060944~exp=1702061544~hmac=8037f86be80a9c5b497553e36397df28f58e3584c2ffc03dc32c29c6ac47b8ef" alt="Simon Drake" class="interviewer-img">
+    <div class="interviewer-name">Simon Drake</div>
+    <div class="interviewer-description">
+      <p>
+        Simon Drake brings extensive experience in technical interviews. With a background in software engineering, he excels in evaluating candidates' coding skills and problem-solving abilities.
+      </p>
+      <p>
+        His interview approach involves practical scenarios to assess applicants' real-world problem-solving capabilities. Outside work, Simon enjoys coding projects and exploring new technologies.
+      </p>
+    </div>
+    <button class="go-back-btn" onclick="goBack()">Go Back</button>
+  </div>
+
+  <script>
+    
+    function goBack() {
+      window.location.href = 'mock interview.html'; 
+    }
+  </script>
+</body>
+</html>
