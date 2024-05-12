@@ -1,14 +1,11 @@
 <?php
-// admin_delete_internships.php
 session_start();
 
-// Check if the user is logged in as an admin
 if (!isset($_SESSION["user_email"])) {
     header("Location: login.php");
     exit;
 }
 
-// Assuming you have a database connection established
 $servername = "localhost";
 $username = "root";
 $password = "root";
@@ -16,16 +13,13 @@ $dbname = "careerforge";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
-// Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Handle internship deletion
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["delete_internship"])) {
     $internshipID = $_POST["delete_internship"];
 
-    // Delete internship
     $deleteSql = "DELETE FROM internships WHERE ID=$internshipID";
 
     if ($conn->query($deleteSql) === TRUE) {
@@ -100,7 +94,6 @@ echo "
 echo "<header><h1>Delete Internships</h1></header>";
 echo "<main>";
 
-// Display all internships with delete buttons
 $sql = "SELECT * FROM internships";
 $result = $conn->query($sql);
 

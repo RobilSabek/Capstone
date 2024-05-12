@@ -72,7 +72,7 @@
 
 <body>
 <?php
-    // Assuming you have a database connection established
+    
     $servername = "localhost";
     $username = "root";
     $password = "root";
@@ -80,15 +80,15 @@
 
     $conn = new mysqli($servername, $username, $password, $dbname);
 
-    // Check connection
+    
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        // Client Signup Form
+        
         if (isset($_POST["client-signup-form"])) {
-            // Retrieve and sanitize form data
+            
             $first_name = mysqli_real_escape_string($conn, $_POST["first_name"]);
             $last_name = mysqli_real_escape_string($conn, $_POST["last_name"]);
             $username = mysqli_real_escape_string($conn, $_POST["username"]);
@@ -96,14 +96,14 @@
             $email = mysqli_real_escape_string($conn, $_POST["email"]);
             $date_of_birth = $_POST["date_of_birth"];
 
-            // Perform the actual signup logic, insert into the Users table
+            
             $sql = "INSERT INTO Users (FirstName, LastName, Username, Password, Email, DateOfBirth) 
                     VALUES ('$first_name', '$last_name', '$username', '$password', '$email', '$date_of_birth')";
 
             if ($conn->query($sql) === TRUE) {
                 echo "Signup successful!";
                 session_start();
-                $_SESSION["user_email"] = $email; // Save user information in a session
+                $_SESSION["user_email"] = $email; 
                 header("Location: index.html");
                 exit();
             } else {
@@ -118,7 +118,7 @@ $conn->close();
 
     <div class="form-container" id="client-form">
         <h2>Sign Up</h2>
-        <!-- Client Sign Up Form -->
+        
         <form id="client-signup-form" method="post" action="">
             <input type="text" name="first_name" placeholder="First Name" required><br>
             <input type="text" name="last_name" placeholder="Last Name" required><br>

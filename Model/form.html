@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>User Success Prediction Form</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f0f0;
+            text-align: center;
+            padding-top: 50px;
+            margin: 0;
+        }
+
+        .form-container {
+            max-width: 400px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.1);
+        }
+
+        input[type="text"],
+        input[type="password"],
+        input[type="email"],
+        input[type="date"],
+        select {
+            width: calc(100% - 20px);
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 25px;
+            outline: none;
+        }
+
+        button {
+            width: calc(100% - 20px);
+            padding: 12px;
+            margin: 20px 0;
+            border: none;
+            border-radius: 25px;
+            background-color: #6A5ACD;
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #4B0082;
+        }
+
+        h2 {
+            color: #6A5ACD;
+        }
+    </style>
+
+
+
+        <!-- Include jQuery for AJAX functionality -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                $('form').on('submit', function(e){
+                    e.preventDefault(); // Stop form from submitting normally
+                    var formData = $(this).serialize(); // Serialize form data
+                    $.ajax({
+                        type: "POST",
+                        url: "predict.php", // Your PHP processing file path
+                        data: formData,
+                        success: function(response){
+                            // Assuming response contains the percentage directly
+                            $('.result').text('Percentage chance of being Accepted: ' + response + '%');
+                        },
+                        error: function(){
+                            $('.result').text('Error processing request');
+                        }
+                    });
+                });
+            });
+        </script>
+
+</head>
+
+<body>
+    <div class="form-container">
+        <h2>User Success Prediction Form</h2>
+        <form action="predict.php" method="post">
+            <!-- Highest Level of Education -->
+            <label for="highest_education">Highest Level of Education:</label>
+            <select name="highest_level_of_education" id="highest_education" required>
+                <option value="">Select</option>
+                <option value="Bachelor's Degree">Bachelor's Degree</option>
+                <option value="Master's Degree">Master's Degree</option>
+                <option value="High School">High School</option>
+                <option value="PhD">PhD</option>
+                <option value="Associate Degree">Associate Degree</option>
+            </select>
+
+            <!-- Number of Jobs/Internships Applied -->
+            <label for="nb_jobs_internships">Number of Jobs/Internships Applied:</label>
+            <select name="nb_jobs/internships_applied" id="nb_jobs_internships" required>
+                <option value="">Select</option>
+                <option value="0-5">0-5</option>
+                <option value="6-10">6-10</option>
+                <option value="11-15">11-15</option>
+                <option value="16-20">16-20</option>
+                <option value="21+">21+</option>
+            </select>
+
+            <!-- Number of Interviews -->
+            <label for="nb_interviews">Number of Interviews:</label>
+            <select name="nb_interviews" id="nb_interviews" required>
+                <option value="">Select</option>
+                <option value="0-2">0-2</option>
+                <option value="3-5">3-5</option>
+                <option value="6-8">6-8</option>
+                <option value="9+">9+</option>
+            </select>
+
+            <!-- Stress Level -->
+            <label for="stress_level">Stress Level:</label>
+            <select name="stress_level" id="stress_level" required>
+                <option value="">Select</option>
+                <option value="Very High">Very High</option>
+                <option value="High">High</option>
+                <option value="Moderate">Moderate</option>
+                <option value="Low">Low</option>
+                <option value="Very Low">Very Low</option>
+            </select>
+
+            <!-- Technical Skills -->
+            <label for="technical_skills">Technical Skills (Programming, Web Development, Machine Learning/AI):</label>
+            <input type="text" name="technical_skills" id="technical_skills" placeholder="Enter skills separated by commas" required>
+
+            <!-- Soft Skills -->
+            <label for="soft_skills">Soft Skills (Communication, Teamwork, Adaptability):</label>
+            <input type="text" name="soft_skills" id="soft_skills" placeholder="Enter skills separated by commas" required>
+
+            <button type="submit">Submit</button>
+        </form>
+
+        <div class="result" style="margin-top: 10px; border: 2px solid purple; height: 50px;"></div>
+    </div>
+</body>
+
+</html>

@@ -1,19 +1,25 @@
 <?php
-// Assuming you have a database connection established
+
+require 'vendor/autoload.php';
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
 $servername = "localhost";
 $username = "root";
 $password = "root";
 $dbname = "careerforge";
+$pass = 'spxx npxo rjyr tprm';
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
-// Check connection
+
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Retrieve form data
+    
     $subscription_plan = $_POST["subscription_plan"];
     $card_number = $_POST["card_number"];
     $expiry_date = $_POST["expiry_date"];
@@ -21,7 +27,39 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $name = $_POST["name"];
     $email = $_POST["email"];
 
-    // SQL query to create a table if not exists
+    $to = $email;
+    $subject = "Subscription Confirmation";
+    $message = "Dear $name,<br><br>Thank you for subscribing to our service. Your subscription plan ($subscription_plan) has been successfully processed.<br><br>Best regards,<br>Career Forge";
+    $headers = "From: robilsabek00@gmail.com"; 
+    $sendFrom = 'robilsabek00@gmail.com';
+
+    $mail = new PHPMailer(true);
+    try {
+        
+        $mail->isSMTP();
+        $mail->Host       = 'smtp.gmail.com';
+        $mail->SMTPAuth   = true;
+        $mail->Username   = $sendFrom;
+        $mail->Password   = $pass;
+        $mail->SMTPSecure = 'tls';
+        $mail->Port       = 587;
+    
+        
+        $mail->setFrom($sendFrom, 'Career Forge');
+        $mail->addAddress($to, $name);
+    
+        
+        $mail->isHTML(true);
+        $mail->Subject = $subject;
+        $mail->Body    = $message;
+    
+        $mail->send();
+        echo 'Message has been sent';
+    } catch (Exception $e) {
+        echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+    }
+
+    
     $createTableQuery = "CREATE TABLE IF NOT EXISTS Subscriptions (
                             id INT AUTO_INCREMENT PRIMARY KEY,
                             subscription_plan VARCHAR(50) NOT NULL,
@@ -34,22 +72,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         )";
 
     if ($conn->query($createTableQuery) === TRUE) {
-        // SQL query to insert data into the table
+        
         $insertDataQuery = "INSERT INTO Subscriptions (subscription_plan, card_number, expiry_date, cvv, name, email)
                             VALUES ('$subscription_plan', '$card_number', '$expiry_date', '$cvv', '$name', '$email')";
 
-        if ($conn->query($insertDataQuery) === TRUE) {
-            echo "Subscription successful. Thank you!";
-            
-            // Send email to the user
-            $to = $email;
-            $subject = "Subscription Confirmation";
-            $message = "Dear $name,\n\nThank you for subscribing to our service. Your subscription plan ($subscription_plan) has been successfully processed.";
-            $headers = "From: robil.sabek@lau.edu"; // Replace with your email address
-
-            // Send email
-            mail($to, $subject, $message, $headers);
-        } else {
+        if ($conn->query($insertDataQuery) !== TRUE) {
             echo "Error: " . $insertDataQuery . "<br>" . $conn->error;
         }
     } else {
@@ -150,7 +177,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <label for="cvv">CVV:</label>
             <input type="text" name="cvv" placeholder="Enter CVV" required><br>
 
-            <!-- User Details (for subscription confirmation, can be expanded) -->
+            <!-- User Details -->
             <label for="name">Full Name:</label>
             <input type="text" name="name" placeholder="Enter your full name" required><br>
 

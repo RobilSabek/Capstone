@@ -38,38 +38,38 @@ function addNewField3() {
 }
 
 function generateCv() {
-    // Name field
+    
     let nameField = document.getElementById('nameField').value;
     let nameT1 = document.getElementById('nameT1');
 
     nameT1.innerHTML = nameField;
     document.getElementById('nameT2').innerHTML = nameField;
 
-    // Contact field
+   
     document.getElementById('contactT').innerHTML = document.getElementById('contactField').value;
 
-    // Email field
+   
     document.getElementById('emailT').innerHTML = document.getElementById('emailField').value;
 
-    // Address field
+   
     document.getElementById('addT1').innerHTML = document.getElementById('addressField').value;
 
-    // Linkedin field
+   
     document.getElementById('lkT').innerHTML = document.getElementById('linkedinField').value;
 
-    // Github field
+    
     document.getElementById('gitT').innerHTML = document.getElementById('gitField').value;
 
-    // Facebook field
+    
     document.getElementById('fbT').innerHTML = document.getElementById('fbField').value;
 
-    // Portfolio/Website field
+   
     document.getElementById('stT').innerHTML = document.getElementById('stField').value;
 
-    // Objective field
+    
     document.getElementById('objectiveT').innerHTML = document.getElementById('objField').value;
 
-    // Work experience
+    
     let workExps = document.getElementsByClassName('weField'); // Getting objects of weField
     let str = '';
 
@@ -78,8 +78,8 @@ function generateCv() {
     }
     document.getElementById('weT').innerHTML = str;
 
-    // Education qualification
-    let eduQua = document.getElementsByClassName('edField'); // Getting objects of edField
+   
+    let eduQua = document.getElementsByClassName('edField'); 
     let str1 = '';
 
     for (let e of eduQua) {
@@ -87,8 +87,8 @@ function generateCv() {
     }
     document.getElementById('edT').innerHTML = str1;
 
-    // Certifications
-    let cerT = document.getElementsByClassName('ceField'); // Getting objects of ceField
+  
+    let cerT = document.getElementsByClassName('ceField');
     let str2 = '';
 
     for (let e of cerT) {
@@ -96,25 +96,25 @@ function generateCv() {
     }
     document.getElementById('cerT').innerHTML = str2;
 
-    // Hide the form and footer, show the template
+    
     document.getElementById('resume-form').style.display = 'none';
     document.getElementById('footer').style.display = 'none';
     document.getElementById('resume-template').style.display = 'block';
 
-    // Image field
+    
     let fileInput = document.getElementById('imgField');
-    let file = fileInput.files[0]; // Getting the first (index at 0) file
+    let file = fileInput.files[0];
 
     if (file) {
         let reader = new FileReader();
 
         reader.readAsDataURL(file);
 
-        // Set the image to the template
+        
         reader.onloadend = function () {
         document.getElementById('imgT').src = reader.result;
 
-            // Call printCv function after setting the image
+           
         };
     }            //printCv();
     //else {

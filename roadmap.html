@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-    
     <meta charset="UTF-8">
     <title>Roadmap Page</title>
     <style>
@@ -19,16 +18,23 @@
 
         .container {
             text-align: center;
-            padding: 20px;
+            padding: 40px;
             background-color: #fff;
-            border-radius: 10px;
+            border-radius: 15px;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
+            max-width: 800px;
+            width: 100%;
+        }
+
+        .container:hover {
+            transform: scale(1.05);
         }
 
         h1 {
             color: #7335b7;
             font-size: 36px;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
         }
 
         .buttons {
@@ -40,23 +46,32 @@
         }
 
         .button {
-            display: inline-block;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             padding: 15px 30px;
             font-size: 18px;
             text-align: center;
             text-decoration: none;
             color: #fff;
-            border-radius: 5px;
+            border-radius: 8px;
             cursor: pointer;
             background-color: #7335b7;
+            border: 2px solid #7335b7;
             transition: all 0.3s ease;
+            width: 100%;
+            max-width: 200px;
         }
 
         .button:hover {
             transform: translateY(-3px);
+            background-color: #a663c7;
+            border: 2px solid #a663c7;
             box-shadow: 0 4px 6px rgba(115, 53, 183, 0.3);
         }
     </style>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 </head>
 
 <body>
@@ -68,7 +83,11 @@
             <a href="pathwd.html" class="button">Web Development</a>
             <a href="pathai.html" class="button">Artificial Intelligence</a>
             <a href="pathdc.html" class="button">Data Science</a>
-            <a href="pathcc.html" class="button">Cloud Computing</a>
+            <a href="pathcloudcoomputing.html" class="button">Cloud Computing</a>
+            <a href="pathmd" class="button">Mobile development</a>
+            <a href="pathgd.html" class="button">Game development</a>
+            <a href="pathse.html" class="button">Software Engineering</a>
+            <a href="pathnlp.html" class="button">Natural Language Processing (NLP)</a>
         </div>
     </div>
 </body>

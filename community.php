@@ -1,7 +1,7 @@
 <?php
 $servername = "localhost";
 $username = "root";
-$password = "";
+$password = "root";
 $dbname = "careerforge";
 
 
@@ -14,7 +14,7 @@ if ($conn->connect_error) {
 $data = json_decode(file_get_contents('php://input'), true);
 
 if (isset($data['code'])) {
-    $code = mysqli_real_escape_string($conn, $data['code']); // Sanitize user input
+    $code = mysqli_real_escape_string($conn, $data['code']); 
     $sql = "INSERT INTO code_review (code) VALUES (?)";
     $stmt = $conn->prepare($sql);
 

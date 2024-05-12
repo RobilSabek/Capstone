@@ -1,8 +1,8 @@
 <?php
-    // Start a session
+
     session_start();
 
-    // Connect to your database
+    
     $servername = "localhost";
     $username = "root";
     $password = "root";
@@ -38,12 +38,12 @@
             position: fixed;
             top: 10px;
             right: 10px;
-            background-color: #ff0000; /* Red background color */
-            color: #fff; /* White text color */
-            padding: 8px 12px; /* Adjust padding based on your preference */
+            background-color: #ff0000; 
+            color: #fff; 
+            padding: 8px 12px; 
             border-radius: 5px;
-            font-size: 18px; /* Adjust font size based on your preference */
-            z-index: 1000; /* Ensure the timer stays on top */
+            font-size: 18px; 
+            z-index: 1000; 
         }
 
         form {
@@ -54,8 +54,8 @@
 
         .questions-container {
             width: 100%;
-            max-width: 600px; /* Adjust the max-width based on your preference */
-            margin: 0 auto; /* Center the container */
+            max-width: 600px; 
+            margin: 0 auto; 
         }
 
         .question {
@@ -75,7 +75,7 @@
         input {
             margin: 5px 0;
             padding: 10px;
-            width: 100%; /* Input fields take full width within the question container */
+            width: 100%; 
             box-sizing: border-box;
         }
 
@@ -115,14 +115,14 @@
 <body>
     <h1>Quiz</h1>
 
-    <!-- Timer display -->
+    <!-- Timer -->
     <div id="timer">30:00</div>
 
     <form id="quiz-form" action="answers.php" method="post">
         <div class="questions-container">
             <?php
                 if (!isset($_POST['showAnswers'])) {
-                    // Fetch all questions from the database
+                    
                     $sql = "SELECT * FROM technical_questions";
                     $result = $conn->query($sql);
 
@@ -172,13 +172,13 @@
             // Add leading zero if seconds less than 10
             seconds = seconds < 10 ? '0' + seconds : seconds;
 
-            // Update the timer display
+            
             timerElement.textContent = minutes + ':' + seconds;
 
             if (timerDuration <= 0) {
                 clearInterval(timer);
 
-                // Check if the form is not submitted yet
+                
                 if (!document.getElementById('quiz-form').submitted) {
                     // Simulate form submission when time is up
                     submitForm();
@@ -189,25 +189,22 @@
         }, 1000); // Update every 1 second
     }
 
-    // Call the function to start the timer
+    
     startTimer();
 
-    // Add event listener to mark the form as submitted when the "Show Answers" button is clicked
+    
     document.getElementById('showAnswersButton').addEventListener('click', function() {
-        // Mark the form as submitted
+        
         document.getElementById('quiz-form').submitted = true;
 
-        // Submit the form using standard form submission
+        
         submitForm();
     });
 
-    // Function to submit the form using standard form submission
     function submitForm() {
         document.getElementById('quiz-form').submit();
     }
 </script>
-
-
 
 </body>
 </html>

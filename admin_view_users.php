@@ -1,10 +1,7 @@
 <?php
-// admin_view_users.php
 session_start();
 
-// Check if the user is logged in as an admin
 if (isset($_SESSION["user_email"])) {
-    // Assuming you have a database connection established
     $servername = "localhost";
     $username = "root";
     $password = "root";
@@ -12,7 +9,7 @@ if (isset($_SESSION["user_email"])) {
 
     $conn = new mysqli($servername, $username, $password, $dbname);
 
-    // Check connection
+   
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
@@ -55,7 +52,6 @@ if (isset($_SESSION["user_email"])) {
 
     echo "<h2>View Users</h2>";
 
-    // Display all users
     $sql = "SELECT * FROM Users";
     $result = $conn->query($sql);
 

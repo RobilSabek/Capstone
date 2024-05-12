@@ -1,8 +1,47 @@
 <?php
-// admin.php
 echo "<style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f0f0f0;
+        margin: 0;
+        padding: 20px;
+    }
+
+    .container {
+        max-width: 800px;
+        margin: 0 auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.1);
+    }
+
     h2 {
         color: #6A5ACD;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .admin-buttons {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-bottom: 20px;
+    }
+
+    .admin-buttons button {
+        margin: 10px;
+        background-color: #6A5ACD;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 20px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .admin-buttons button:hover {
+        background-color: #4B0082;
     }
 
     table {
@@ -19,6 +58,7 @@ echo "<style>
 
     th {
         background-color: #6A5ACD;
+        color: #fff;
     }
 
     tr:nth-child(even) {
@@ -33,31 +73,13 @@ echo "<style>
     a:hover {
         color: #6A5ACD;
     }
-
-    .admin-buttons {
-        margin-top: 20px;
-    }
-
-    .admin-buttons button {
-        margin-right: 10px;
-        background-color: #28a745;
-        color: #fff;
-        border: none;
-        border-radius: 5px;
-        padding: 10px 15px;
-        cursor: pointer;
-    }
-
-    .admin-buttons button:hover {
-        background-color: #218838;
-    }
 </style>";
 
 session_start();
 
-// Check if the user is logged in
+
 if (isset($_SESSION["user_email"])) {
-    // Assuming you have a database connection established
+    
     $servername = "localhost";
     $username = "root";
     $password = "root";
@@ -65,14 +87,14 @@ if (isset($_SESSION["user_email"])) {
 
     $conn = new mysqli($servername, $username, $password, $dbname);
 
-    // Check connection
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
 
+    echo "<div class='container'>";
     echo "<h2>Admin Dashboard</h2>";
 
-    // Display buttons for different actions
+   
     echo "<div class='admin-buttons'>";
     echo "<button onclick='viewUsers()'>View Users</button>";
     echo "<button onclick='viewJobs()'>View Jobs</button>";
@@ -83,9 +105,9 @@ if (isset($_SESSION["user_email"])) {
     echo "<button onclick='addInternships()'>Add Internships</button>";
     echo "<button onclick='editInternships()'>Edit Internships</button>";
     echo "<button onclick='deleteInternships()'>Delete Internships</button>";
+    echo "<button onclick='viewSubscribedUsers()'>View Subscribed Users</button>";
     echo "</div>";
 
-    // Handle activation/deactivation actions
     if (isset($_GET["action"]) && isset($_GET["userID"])) {
         $action = $_GET["action"];
         $userID = $_GET["userID"];
@@ -96,16 +118,13 @@ if (isset($_SESSION["user_email"])) {
             $conn->query("UPDATE Users SET Status='inactive' WHERE UserID=$userID");
         }
 
-        header("Location: admin.php"); // Redirect to refresh the page after the action
+        header("Location: admin.php");
         exit();
     }
 
-    // Your existing code for displaying users...
-    // ...
-
     $conn->close();
+    echo "</div>";
 } else {
-    // Redirect if not logged in
     header("Location: login.php");
     exit();
 }
@@ -149,5 +168,8 @@ if (isset($_SESSION["user_email"])) {
         window.location.href = "admin_delete_internships.php";
     }
 
+    function viewSubscribedUsers() {
+        window.location.href = "admin_view_subscribed_users.php";
+    }
 
 </script>

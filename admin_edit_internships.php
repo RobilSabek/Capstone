@@ -1,10 +1,7 @@
 <?php
-// admin_manage_jobs.php
-session_start();
 
-// Check if the user is logged in as an admin
 if (isset($_SESSION["user_email"])) {
-    // Assuming you have a database connection established
+   
     $servername = "localhost";
     $username = "root";
     $password = "root";
@@ -12,7 +9,6 @@ if (isset($_SESSION["user_email"])) {
 
     $conn = new mysqli($servername, $username, $password, $dbname);
 
-    // Check connection
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
@@ -105,12 +101,11 @@ if (isset($_SESSION["user_email"])) {
     echo "<nav><ul><li><a href='admin.php'>Admin Dashboard</a></li></ul></nav>";
     echo "<main>";
 
-    // Display all jobs with edit/delete options
     $sql = "SELECT * FROM internships";
     $result = $conn->query($sql);
 
     if ($result->num_rows > 0) {
-        // Display the form with all jobs
+        
         echo '<form action="" method="post">';
         
         while ($row = $result->fetch_assoc()) {
@@ -139,7 +134,6 @@ if (isset($_SESSION["user_email"])) {
 
     echo "</main>";
 
-    // Handle form submission for editing jobs
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         foreach ($_POST as $jobID => $jobData) {
             $company = $jobData["company"];
@@ -148,7 +142,6 @@ if (isset($_SESSION["user_email"])) {
             $deadline = $jobData["deadline"];
             $location = $jobData["location"];
 
-            // Update the job in the database
             $updateSql = "UPDATE internships SET 
                           COMPANY='$company', 
                           LINK='$link', 

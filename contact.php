@@ -1,43 +1,51 @@
 <?php
 
+require 'vendor/autoload.php';
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+$pass = 'spxx npxo rjyr tprm'; 
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Collect form data
-    $fullName = $_POST["full_name"];
+   
+    $full_name = $_POST["full_name"];
     $email = $_POST["email"];
     $phone = $_POST["phone"];
     $message = $_POST["message"];
 
-    // Validate data (you might want to add more validation)
-    if (empty($fullName) || empty($email) || empty($phone) || empty($message)) {
-        echo "All fields are required.";
-        exit;
-    }
-
-    ini_set("SMTP", "smtp.gmail.com");
-    ini_set("smtp_port", 465);
-
-
-    // Set up email
     $to = $email;
-    $subject = "New Call Back Request";
-    $headers = "From: robilsabek00@gmail.com";
+    $subject = "Thank you for contacting us";
+    $message_body = "Dear $full_name,\n\nThank you for contacting us about $message. We will get back to you as soon as possible.\n\nBest regards,\nCareer Forge";
+    $headers = "From: robilsabek00@gmail.com"; 
+    $sendFrom = 'robilsabek00@gmail.com';
 
-    // Compose email message
-    $emailMessage = "Full Name: $fullName\n";
-    $emailMessage .= "Email: $email\n";
-    $emailMessage .= "Phone: $phone\n";
-    $emailMessage .= "Message: $message\n";
-
-    // Send email
-
-    if(mail($to, $subject, $emailMessage, $headers)){
-        echo "Thank you! Your request has been submitted.";
+    $mail = new PHPMailer(true);
+    try {
+       
+        $mail->isSMTP();                                            
+        $mail->Host       = 'smtp.gmail.com';
+        $mail->SMTPAuth   = true;
+        $mail->Username   = $sendFrom;
+        $mail->Password   = $pass;
+        $mail->SMTPSecure = 'tls';
+        $mail->Port       = 587;
+    
+        
+        $mail->setFrom($sendFrom, 'Career Forge');
+        $mail->addAddress($to, $full_name);     
+    
+       
+        $mail->isHTML(false);
+        $mail->Subject = $subject;
+        $mail->Body    = $message_body;
+    
+        $mail->send();
+        echo 'Message has been sent';
+        header('Location: contact.html');
+        exit();
+    } catch (Exception $e) {
+        echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
     }
-
- else {
-    // If not a POST request, redirect or handle accordingly
-    echo "Invalid request.";
 }
-}
-
 ?>

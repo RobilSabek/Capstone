@@ -30,7 +30,7 @@ $result = $conn->query($sql);
             margin: 20px;
             text-align: center;
             background-color: #f8f9fa;
-            position: relative; /* Add this line to set a relative position */
+            position: relative; 
         }
 
         h1 {
@@ -95,7 +95,7 @@ $result = $conn->query($sql);
 <body>
 
     
-    <!-- "Take The Quiz" button at the top -->
+    
     <div class="navigation-container">
         <a href="quiz.php">Take The Quiz!</a>
     </div>
@@ -114,16 +114,16 @@ $result = $conn->query($sql);
 
         <div class="navigation-container">
             <?php if ($offset > 0): ?>
-                <!-- Display "Previous" button if not on the first set of questions -->
+                <!--Previous!-->
                 <a href="?offset=<?= max(0, $offset - $limit) ?>">Previous</a>
             <?php endif; ?>
 
             <?php if ($result->num_rows == $limit): ?>
-                <!-- Display "Next" button if there are more questions -->
+                <!-- Next-->
                 <a href="?offset=<?= $offset + $limit ?>">Next</a>
             <?php endif; ?>
 
-            <!-- Button to go back to index.html -->
+        
             <a href="index.html">Back to Home Page</a>
         </div>
     <?php else: ?>

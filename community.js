@@ -17,7 +17,7 @@ document.getElementById('codeForm').addEventListener('submit', function(event) {
     });
   });
 
-// Refactored submitCode function in community.js
+
 function submitCode(code) {
     fetch('submit_code.php', {
         method: 'POST',
@@ -32,12 +32,12 @@ function submitCode(code) {
             updateCodeHistory(); 
         } else {
             console.error('Error:', data.error);
-            // Provide user feedback about submission failure
+            
         }
     })
     .catch(error => {
         console.error('Error:', error);
-        // Provide user feedback about network or unexpected errors
+        
     });
 }
 

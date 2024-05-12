@@ -64,7 +64,7 @@ a {
 
 .btn-primary {
   color: #02040e;
-  padding: 15px 0; /* Adjust the vertical padding as needed */
+  padding: 15px 0; 
   border-radius: 100px;
   background-color: #6baef1;
   background-image: radial-gradient(
@@ -123,7 +123,7 @@ a {
 
 .btn-add {
   color: #02040e;
-  padding: 15px 0; /* Adjust the vertical padding as needed */
+  padding: 15px 0; 
   border-radius: 100px;
   background-color: #6baef1;
   background-image: radial-gradient(

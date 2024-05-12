@@ -1,6 +1,3 @@
-
-<!-- answers.php -->
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -69,7 +66,7 @@
             }
 
 
-            // Fetch the answers from the session
+            
             session_start();
             
             if (isset($_SESSION['selected_questions'])) {
@@ -77,7 +74,7 @@
                     $question_id = $row['question_id'];
                     $user_answer = isset($_POST['answers'][$question_id]) ? $_POST['answers'][$question_id] : 'Not provided';
 
-                    // Fetch the correct answer from the database
+                    
                     $sql = "SELECT answer FROM technical_questions WHERE question_id = $question_id";
                     $result = $conn->query($sql);
                     $db_row = $result->fetch_assoc();
@@ -90,7 +87,7 @@
                     echo '</div>';
                 }
 
-                // Clear the session after displaying answers
+                
                 unset($_SESSION['selected_questions']);
             } else {
                 echo '<p>No selected questions found.</p>';

@@ -1,14 +1,11 @@
 <?php
-// admin_delete_jobs.php
 session_start();
 
-// Check if the user is logged in as an admin
 if (!isset($_SESSION["user_email"])) {
     header("Location: login.php");
     exit;
 }
 
-// Assuming you have a database connection established
 $servername = "localhost";
 $username = "root";
 $password = "root";
@@ -16,16 +13,13 @@ $dbname = "careerforge";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
-// Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Handle job deletion
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["delete_job"])) {
     $jobID = $_POST["delete_job"];
 
-    // Delete job
     $deleteSql = "DELETE FROM jobs WHERE ID=$jobID";
 
     if ($conn->query($deleteSql) === TRUE) {
@@ -100,7 +94,6 @@ echo "
 echo "<header><h1>Delete Jobs</h1></header>";
 echo "<main>";
 
-// Display all jobs with delete buttons
 $sql = "SELECT * FROM jobs";
 $result = $conn->query($sql);
 

@@ -1,4 +1,3 @@
-<!-- login.php -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -72,7 +71,7 @@
 <body>
     <div class="form-container" id="client-form">
         <h2>Log In</h2>
-        <!-- Client Log In Form -->
+        
         <form id="client-login-form" method="post" action="">
             <input type="email" name="email" placeholder="Email" required><br>
             <input type="password" name="password" placeholder="Password" required><br>
@@ -88,7 +87,7 @@
 </html>
 
 <?php
-session_start(); // Ensure session is started
+session_start();
 
 $servername = "localhost";
 $username = "root";
@@ -102,12 +101,12 @@ if ($conn->connect_error) {
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Client Login Form
+    
     if (isset($_POST["client-login-form"])) {
         $email = $_POST["email"];
         $password = $_POST["password"];
 
-        // Use prepared statements to prevent SQL injection
+        
         $stmt = $conn->prepare("SELECT * FROM Users WHERE Email = ?");
         $stmt->bind_param("s", $email);
 
@@ -115,21 +114,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $result = $stmt->get_result();
 
         if ($result->num_rows > 0) {
-            // User found, check the password and status
+        
             $row = $result->fetch_assoc();
             if (password_verify($password, $row['Password']) && $row['Status'] == 'active') {
-                // Check for specific email
+                
                 $_SESSION["user_email"] = $email;
+                // admins
                 if ($email == "robilsabek@gmail.com" || $email == "robeelmili@gmail.com") {
-                    // Redirect to admin.php for the specific user
+                    
                     header("Location: admin.php");
                 } else {
-                    // Login successful, but not for the specific user
+                    // users
                     header("Location: index.html");
                 }
                 exit();
             } else {
-                // Handle inactive status or invalid password
+                
                 if ($row['Status'] != 'active') {
                     echo "Account is inactive. Please contact support.";
                 } else {
@@ -137,7 +137,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 }
             }
         } else {
-            // User not found
+            
             echo "Invalid email or password";
         }
 

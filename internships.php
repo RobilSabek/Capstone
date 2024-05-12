@@ -26,7 +26,6 @@ if ($conn->connect_error) {
     <link href="css/responsive.css" rel="stylesheet" />
 
     <style>
-        /* Table styling */
         table {
             width: 100%;
             border-collapse: collapse;
@@ -185,6 +184,5 @@ if ($conn->connect_error) {
 </html>
 
 <?php
-// Close connection
 $conn->close();
 ?>

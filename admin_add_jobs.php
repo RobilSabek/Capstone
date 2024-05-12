@@ -1,10 +1,8 @@
 <?php
-// admin_add_job.php
 session_start();
 
-// Check if the user is logged in as an admin
 if (isset($_SESSION["user_email"])) {
-    // Assuming you have a database connection established
+    
     $servername = "localhost";
     $username = "root";
     $password = "root";
@@ -12,7 +10,7 @@ if (isset($_SESSION["user_email"])) {
 
     $conn = new mysqli($servername, $username, $password, $dbname);
 
-    // Check connection
+   
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
@@ -59,7 +57,7 @@ if (isset($_SESSION["user_email"])) {
 
     echo "<h2>Add Job</h2>";
 
-    // Handle job submission
+
     if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submit_job"])) {
         $company = $_POST["company"];
         $link = $_POST["link"];
@@ -67,10 +65,6 @@ if (isset($_SESSION["user_email"])) {
         $deadline = $_POST["deadline"];
         $location = $_POST["location"];
 
-        // Validate and insert job into the database
-        // Add your validation and database insertion code here
-
-        // Example: Insert job into the 'jobs' table
         $sql = "INSERT INTO jobs (COMPANY, LINK, CATEGORY, DEADLINE, LOCATION) VALUES ('$company', '$link', '$category', '$deadline', '$location')";
         if ($conn->query($sql) === TRUE) {
             echo "<p>Job added successfully!</p>";
@@ -79,7 +73,6 @@ if (isset($_SESSION["user_email"])) {
         }
     }
 
-    // Display job submission form
     echo "<form method='post' action=''>
             <label for='company'>Company:</label>
             <input type='text' name='company' required>
